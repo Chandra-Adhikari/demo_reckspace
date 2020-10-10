@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+</style>
+</head>
+<body>
+
+<h2>Members</h2>
+<div>
+	<%= link_to 'Add Member', new_user_path, class: 'btn btn-primary float-right' %>
+</div>
+</br>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Web Url</th>
+    <!-- <th>Headings</th> -->
+    <th>Friend Count</th>
+    <th></th>
+
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.website_url %></td>
+    <td><%= user.friendships.count %></td>
+    <td>
+    	<%= link_to 'Add Friend', member_list_user_path(user), class: 'btn btn-primary float-right' %>
+    </td>
+  </tr>
+  <% end if @users.present? %>
+</table>
+
+</body>
+</html>
