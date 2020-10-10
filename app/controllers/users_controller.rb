@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_member, only: [:member_list, :add_friend]
+  before_action :find_member, only: [:member_list, :add_friend, :show]
 
   def index
   	@users = User.all
@@ -26,7 +26,8 @@ class UsersController < ApplicationController
   end
 
   def add_friend
-    binding.pry
+    Friendship.create(user_id: params["id"], friend_id: params["friend_id"])
+    redirect_to member_list_user_path(params["id"])
   end
 
   private

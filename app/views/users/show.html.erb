@@ -1,0 +1,28 @@
+
+<div class="offset-2 col-8">
+	<h2>Member Details</h2>
+	<%= link_to 'Back', users_path, class: 'btn btn-primary float-right' %>
+  <div class="form-group">
+    <b>Name: </b>
+    <%= @member.name %>
+  </div>
+  <div class="form-group">
+    <b>Website URL: </b>
+    <%= @member.website_url %>
+  </div>
+  <div class="form-group">
+  	<b>Shortened URL: </b>
+    <%= @member.shortened_url %>
+  </div>
+  <div class="form-group">
+  	<b>Headings: </b>
+    <%= user_headings(@member) %>
+  </div>
+   <div class="form-group">
+  	<b>Friends </b>
+    <% user_friends(@member).each do |member| %>
+    	</br>
+    	<%= link_to member.name, user_path(member) %>
+    <%end%>
+  </div>
+</div>

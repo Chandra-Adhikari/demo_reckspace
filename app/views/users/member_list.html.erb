@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+</style>
+</head>
+<body>
+<div class="offset-2 col-8">
+  <h2>Members</h2>
+  <%= link_to 'Back', users_path, class: 'btn btn-primary float-right' %>
+  </br></br>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th></th>
+
+    </tr>
+    <% @members.each do |member| %>
+    <tr>
+      <td><%= link_to member.name, user_path(member) %></td>
+      <td>
+      	<%= link_to 'Add', add_friend_user_path(friend_id: member.id), class: 'btn btn-primary' %>
+      </td>
+    </tr>
+    <% end if @members.present? %>
+  </table>
+</div>
+</body>
+</html>

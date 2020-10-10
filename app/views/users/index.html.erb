@@ -16,32 +16,30 @@ td, th {
 </style>
 </head>
 <body>
+<div class="offset-1 col-10">
 
-<h2>Members</h2>
-<div>
-	<%= link_to 'Add Member', new_user_path, class: 'btn btn-primary float-right' %>
+  <h2>Members</h2>
+  <%= link_to 'Add Member', new_user_path, class: 'btn btn-primary float-right' %>
+  </br></br>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Web Url</th>
+      <th>Friend Count</th>
+      <th></th>
+
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.name, user_path(user) %></td>
+      <td><%= user.website_url %></td>
+      <td><%= user.friendships.count %></td>
+      <td>
+      	<%= link_to 'Add Friend', member_list_user_path(user), class: 'btn btn-primary float-right' %>
+      </td>
+    </tr>
+    <% end if @users.present? %>
+  </table>
 </div>
-</br>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Web Url</th>
-    <!-- <th>Headings</th> -->
-    <th>Friend Count</th>
-    <th></th>
-
-  </tr>
-  <% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= user.website_url %></td>
-    <td><%= user.friendships.count %></td>
-    <td>
-    	<%= link_to 'Add Friend', member_list_user_path(user), class: 'btn btn-primary float-right' %>
-    </td>
-  </tr>
-  <% end if @users.present? %>
-</table>
-
 </body>
 </html>
