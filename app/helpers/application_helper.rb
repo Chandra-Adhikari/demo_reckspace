@@ -6,7 +6,6 @@ module ApplicationHelper
 
 	def user_friends(user)
 		user_ids = user.friend_ids
-		user_ids.delete(user.id)
 		User.where(id: user_ids)
 	end
 end

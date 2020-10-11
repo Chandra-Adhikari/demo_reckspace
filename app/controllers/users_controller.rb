@@ -19,6 +19,14 @@ class UsersController < ApplicationController
   end
 
   def show
+    if params["search"].present?
+      @heading = Heading.where("title ILIKE ?", "%#{params["search"]}%").first
+      return if @member.id.eql?(@heading.user_id)
+      
+      @expert =  @heading.user
+      @linked_friend_ids = FindExpertPath.new(@member.id).path_to(@expert.id)
+      @linked_friend = User.where(id: @linked_friend_ids).pluck(:name)
+    end
   end
 
   def member_list
