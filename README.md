@@ -5,20 +5,15 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version - ruby '2.5.1'
+* Rails version - rails '6.0.3'
 
-* System dependencies
+* Configuration:
+  * git clone https://github.com/Chandra-Adhikari/demo_reckspace.git
+  * cd demo_reckspace
+  * bundle install
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* Database creation:
+  * rake db:create db:migrate db:seed
 
 * ...

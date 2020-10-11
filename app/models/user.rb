@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
 	has_many :headings, dependent: :destroy
 
+	validates :name, :website_url, presence: true
+
 	def add_headings
 		web_url = self.website_url
 		title = Nokogiri::HTML::Document.parse(HTTParty.get("#{web_url}").body).css('h1, h2, h3').children.to_s

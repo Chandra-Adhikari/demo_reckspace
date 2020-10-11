@@ -37,10 +37,5 @@
 	  	<b>Result: </b>
 	    <%= @linked_friend.join(' -> ') %> (<%= params["search"]%>)
 	  </div>
-	<%elsif @expert_friend.present? %>
-	<div class="form-group">
-	  	<b>Result: </b>
-	    <%= @member.name%> -> <%= @expert_friend.name %> (<%= params["search"]%>)
-	  </div>
 	<%end%>
 </div>
