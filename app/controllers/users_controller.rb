@@ -25,8 +25,7 @@ class UsersController < ApplicationController
         return if @member.id.eql?(@heading&.user_id)
         
         @expert =  @heading.user
-        @linked_friend_ids = FindExpertPath.new(@member.id).path_to(@expert.id)
-        @linked_friend = User.where(id: @linked_friend_ids).pluck(:name)
+        @linked_friend = FindExpertPath.new(@member.id).path_to(@expert.id)
       end
     end
   end
