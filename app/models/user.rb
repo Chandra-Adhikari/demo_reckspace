@@ -12,9 +12,8 @@ class User < ApplicationRecord
 	end
 
 	def short_website_url
-		payload = { long_url: self.website_url, domain: "bit.ly", group_guid: "BkaabQd2paX" }
-		response = RestClient.post('https://api-ssl.bitly.com/v4/shorten', 
-			payload.to_json, Authorization: 'Bearer f821e1e45563efa875493770868fd13edcb52573', 
+		payload = { long_url: self.website_url, domain: ENV['shortner_domain'], group_guid: ENV['shortner_group_guid'] }
+		response = RestClient.post(ENV['shortner_url'], payload.to_json, Authorization: ENV['shortner_auth_token'], 
 			:content_type => 'application/json')
 		self.shortened_url = JSON.parse(response)['link']
 	end

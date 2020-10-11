@@ -7,9 +7,6 @@ class FindExpertPath
     dfs(member)
   end
 
-  # After the depth-first search is done we can find
-  # any vertice connected to "node" in constant time [O(1)]
-  # and find a path to this node in linear time [O(n)].
   def path_to(expert)
     return unless has_path_to?(expert)
     path = []
